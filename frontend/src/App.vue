@@ -5,12 +5,11 @@ import NavBar from './components/Navbar.vue';
 
 <template>
   <div class="app">
-    <SidebarVue />
+    <SidebarVue class="sidenav" />
     <div class="header">
      <NavBar />
     <RouterView></RouterView> 
     </div>
-    
   </div>
 </template>
 
@@ -29,7 +28,6 @@ import NavBar from './components/Navbar.vue';
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
   font-family: 'Fira sans', sans-serif;
 }
 
@@ -80,6 +78,10 @@ button {
 }
 
 .header {
+  overflow-y: scroll;
   width: 100%;
+}
+
+.sidenav{
 }
 </style>
