@@ -75,6 +75,7 @@
                   <input
                     class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                     id="grid-nome" type="text" placeholder="joe" v-model="address.nome">
+                    <!-- <p class="text-red-500 text-xs italic" v-if="form.errors.has('nome')" v-text="form.errors.get('nome')"></p> -->
                 </div>
                 <div class="w-full md:w-1/3 px-3">
                   <label class="block uppercase tracking-wide text-white text-xs font-bold mb-2" for="grid-cep">
@@ -88,9 +89,14 @@
                   <label class="block uppercase tracking-wide text-white text-xs font-bold mb-2" for="grid-estado">
                     Estado
                   </label>
-                  <input
-                    class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                    id="grid-estado" type="text" placeholder="Doe" v-model="address.estado">
+                  <select
+                    class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                    id="grid-estado" placeholder="Doe" v-model="address.estado">
+                    <option selected>{{address.estado}}</option>
+                    <option v-for="(state) in states " :key="state.sigla">
+                    {{state.nome}}
+                    </option>
+                    </select>
                 </div>
                 <div class="w-full md:w-1/3 px-3">
                   <label class="block uppercase tracking-wide text-white text-xs font-bold mb-2" for="grid-cidade">
@@ -169,6 +175,35 @@ export default {
   },
   data() {
     return {
+      states: [
+        { sigla: 'AC', nome: 'Acre' },
+        { sigla:'AL',nome: 'Alagoas' },
+        { sigla:'AP',nome: 'Amapá' },
+        { sigla:'AM',nome: 'Amazonas' },
+        { sigla:'BA',nome: 'Bahia' },
+        { sigla:'CE', nome: 'Ceará' },
+        { sigla:'DF', nome: 'Distrito Federal' },
+        { sigla:'ES', nome: 'Espírito Santo' },
+        { sigla:'GO', nome: 'Goías' },
+        { sigla:'MA', nome: 'Maranhão' },
+        { sigla:'MT', nome: 'Mato Grosso' },
+        { sigla:'MS', nome: 'Mato Grosso do Sul' },
+        { sigla:'MG', nome: 'Minas Gerais' },
+        { sigla:'PA', nome: 'Pará' },
+        { sigla:'PB', nome: 'Paraíba' },
+        { sigla:'PR', nome: 'Paraná' },
+        { sigla:'PE', nome: 'Pernambuco' },
+        { sigla:'PI', nome: 'Piauí' },
+        { sigla:'RJ', nome: 'Rio de Janeiro' },
+        { sigla:'RN', nome: 'Rio Grande do Norte' },
+        { sigla:'RS', nome: 'Rio Grande do Sul' },
+        { sigla:'RO', nome: 'Rondônia' },
+        { sigla:'RR', nome: 'Roraíma' },
+        { sigla:'SC', nome: 'Santa Catarina' },
+        { sigla:'SP', nome: 'São Paulo' },
+        { sigla:'SE', nome: 'Sergipe' },
+        { sigla:'TO', nome: 'Tocantins' },
+      ],
       isOpen: false,
       address: new Form({
         id: null,

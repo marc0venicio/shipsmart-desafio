@@ -2,6 +2,7 @@
 namespace App\Http\Services\Address;
 
 use App\Models\Address;
+use App\Models\Contact;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
 
@@ -60,11 +61,15 @@ class AddressService {
 
             $address->save();
 
+            $address->contact()->delete();
+
             foreach ($parameters['contact'] as $telephones) {
                 $telephonesParameters = [
+                    // 'id' => $address->id,
                     'telephone' => $telephones
                 ];
-                $address->contact()->updateOrCreate($telephonesParameters);
+                
+                $address->contact()->create($telephonesParameters);
             }
 
             DB::commit();

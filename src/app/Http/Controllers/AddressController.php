@@ -16,7 +16,7 @@ class AddressController extends Controller
     {
         $success = new AddressCollection(Address::paginate($request->input('limit', 10), ['*'], 'offset', $request->input('offset', 1)));
 
-        return response()->json($success, 201);
+        return response()->json($success, 200);
     }
 
     public function show(Address $id) {
@@ -52,13 +52,15 @@ class AddressController extends Controller
         ], 200);
     }
 
-    public function delete(Address $id, AddressService $addressService){
+    public function delete(Address $address, AddressService $addressService){
 
-        $addressService->delete($id);
+        $address->contact()->delete();
+        $data = $address->delete();
 
         return response()->json([
             'status' => true,
             'message' => "Address Deleted successfully!",
+            'data' => $data 
         ], 200);
     }
 

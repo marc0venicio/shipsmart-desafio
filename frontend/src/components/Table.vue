@@ -55,7 +55,7 @@
                   </td>
                   <td class="text-sm text-white font-light whitespace-nowrap">
                     <div class="flex flex-row align-middle gap-1">
-                      <span class="cursor-pointer" @click="handleUpdate(value, index)">edit</span> | <span>delete</span>
+                      <span class="cursor-pointer" @click="handleUpdate(value, index)">edit</span> | <span class="cursor-pointer" @click="deleteAddress(value.id )">delete</span>
                     </div>
                   </td>
                 </tr>
@@ -157,8 +157,8 @@ export default {
       this.currentIndex = address ? index : -1;
     },
 
-    removeAlladdress() {
-      DataService.deleteAll()
+    deleteAddress(id) {
+      DataService.delete(id)
         .then(response => {
           console.log(response.data);
           this.refreshList();
