@@ -37,3 +37,5 @@ deletando e listando; Pode ser apenas um teste para cada ação;<strong>nao cons
 usar boostrap no vuejs 3 não seria uma opção muito viável, nos testes deixei a desejar, como nunca tinha trabalhado com testes antes, não consegui terminar a tempo de implementar
 mas, aprendi bastante nesses últimos dias, foi um verdadeiro desafio</p>
 
+
+<img src = "/desafio-dashboard.png" alt = "demo" height = "425">
